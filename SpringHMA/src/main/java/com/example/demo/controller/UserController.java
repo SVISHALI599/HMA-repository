@@ -3,43 +3,41 @@ package com.example.demo.controller;
 import java.util.List;
 
 import javax.websocket.server.PathParam;
+import javax.ws.rs.Path;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.User;
+import com.example.demo.service.UserService;
 
 @RestController
+@Path("/controller/user")
 public class UserController {
-	UserMapper mapper;
+	@Autowired
+	UserService service;
 
-	public UserController(UserMapper mapper) {
-		this.mapper = mapper;
+	public UserController(UserService service) {
+		this.service = service;
 	}
 
 	@GetMapping("/all")
 
 	public List<User> getAllUser() {
-		return mapper.getAllUser();
+		return service.getAllUser();
 	}
 
 	@GetMapping("/userid/{id}")
 
 	public User getUserById(@PathParam("id") int id) {
-		return mapper.getUserById(id);
+		return service.getUserById(id);
 	}
+
 	@PostMapping("/userinsert")
-	public User setUser(@PathParam("user_name") String user_name,
-			@PathParam("user_password") String user_password, @PathParam("user_age") Integer user_age,
-			@PathParam("user_gender") String user_gender,
-			@PathParam("user_mobile_number") String user_mobile_number,
-			@PathParam("user_email_id") String user_email_id,
-			@PathParam("user_address_line1") String user_address_line1,
-			@PathParam("user_address_line2") String user_address_line2,
-			@PathParam("user_address_line3") String user_address_line3) {
-		return mapper.setUser();
+	public User setUser(User user) {
+		return service.setUser();
 	}
 
 }

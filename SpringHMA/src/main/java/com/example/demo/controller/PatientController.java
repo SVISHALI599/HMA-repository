@@ -3,7 +3,9 @@ package com.example.demo.controller;
 import java.util.List;
 
 import javax.websocket.server.PathParam;
+import javax.ws.rs.Path;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +18,9 @@ import com.example.demo.model.Patient;
 import com.example.demo.service.*;
 
 @RestController
+@Path("/controller/patient")
 public class PatientController {
-
+	@Autowired
 	patientService patientService;
 
 	public PatientController(patientService patientService) {
@@ -37,9 +40,9 @@ public class PatientController {
 	}
 
 	@PostMapping("/setPatient")
-	public ResponseEntity<Integer> createPatient(@RequestBody Patient patient) {
-		int noRowsAffected = patientService.setPatient(patient);
-		return ResponseEntity.status(HttpStatus.OK).body(noRowsAffected);
+	public ResponseEntity<Integer> setPatient(@RequestBody Patient patient) {
+		int status = patientService.setPatient(patient);
+		return ResponseEntity.status(HttpStatus.OK).body(status);
 
 	}
 
@@ -48,9 +51,9 @@ public class PatientController {
 		return patientService.deletePatient(pk_user_id);
 	}
 
-	@PutMapping("/updatePatient")
-	public ResponseEntity<Integer> updatePatient(@RequestBody Patient patient) {
-		int status = patientService.updatePatient(patient);
+	@PutMapping("/updatePatient/{id}")
+	public ResponseEntity<Integer> updatePatient(@RequestBody Patient patient,@PathParam("pk_user_id") int id) {
+		int status = patientService.updatePatient(patient,id);
 		return ResponseEntity.status(HttpStatus.OK).body(status);
 
 	}
