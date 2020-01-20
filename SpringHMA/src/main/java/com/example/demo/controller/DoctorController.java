@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Doctor;
+import com.example.demo.model.Doctor_patient_mapping;
 import com.example.demo.model.Patient;
 import com.example.demo.service.DoctorService;
 
@@ -68,5 +69,10 @@ public class DoctorController {
 	public List<Patient> getAllPatientsOfDoctor(@PathParam("pk_doctor_id") int pk_doctor_id) {
 		logger.traceEntry();
 		return logger.traceExit(doctorservice.getAllPatientsOfDoctor(pk_doctor_id));
+	}
+	@GetMapping("/allPatientsOfAllDoctors")
+	public List<Doctor_patient_mapping> getAllPatientsOfallDoctors(){
+		logger.traceEntry();
+		return logger.traceExit(doctorservice.getAllPatientsOfAllDoctors());
 	}
 }

@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.model.Doctor;
+import com.example.demo.model.Doctor_patient_mapping;
 import com.example.demo.model.Patient;
 
 @Mapper
@@ -35,4 +36,6 @@ public interface DoctorMapper {
 
 	@Select("SELECT * FROM t_user JOIN  t_patient ON t_user.pk_user_id=t_patient.fk_user_id JOIN t_doctor_patient_mapping WHERE t_user.pk_user_id=t_doctor_patient_mapping.fk_patient_id and t_doctor_patient_mapping.fk_doctor_id=#{id} and t_user.is_delete=0;")
 	List<Patient> getAllPatientsOfDoctor(int id);
+	@Select("SELECT * FROM t_user JOIN  t_patient ON t_user.pk_user_id=t_patient.fk_user_id JOIN t_doctor_patient_mapping WHERE t_user.pk_user_id=t_doctor_patient_mapping.fk_patient_id and t_doctor_patient_mapping.fk_doctor_id in(select fk_doctor_id from t_doctor_patient_mapping);")
+    List<Doctor_patient_mapping> getAllPatientsOfAllDoctors();
 }
