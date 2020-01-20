@@ -2,8 +2,6 @@ package com.example.demo.mapper;
 
 import java.util.List;
 
-import javax.ws.rs.Path;
-
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -33,5 +31,5 @@ public interface PatientMapper {
 	int deletePatient(int userId);
 
 	@Update("UPDATE t_user SET user_name = #{userName}, user_password=#{userPassword}, user_age=#{userAge}, user_gender=#{userGender}, user_mobile_number=#{userMobileNumber}, user_email_id=#{userEmailId}, user_address_line1=#{userAddressLine1}, user_address_line2=#{userAddressLine2}, user_address_line3 = #{userAddressLine3} WHERE pk_user_id = #{userId}")
-	int updatePatient(Patient patient,int id);
+	int updatePatient(Patient patient, int id);
 }

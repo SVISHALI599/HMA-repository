@@ -2,8 +2,6 @@ package com.example.demo.mapper;
 
 import java.util.List;
 
-import javax.ws.rs.Path;
-
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -11,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.model.Doctor;
+import com.example.demo.model.Patient;
 
 @Mapper
 
@@ -32,5 +31,8 @@ public interface DoctorMapper {
 	int deleteDoctor(int userId);
 
 	@Update("UPDATE t_user SET user_name = #{userName}, user_password=#{userPassword}, user_age=#{userAge}, user_gender=#{userGender}, user_mobile_number=#{userMobileNumber}, user_email_id=#{userEmailId}, user_address_line1=#{userAddressLine1}, user_address_line2=#{userAddressLine2}, user_address_line3 = #{userAddressLine3} WHERE pk_user_id = #{userId}")
-	int updateDoctor(Doctor doctor);
+	int updateDoctor(Doctor doctor, int id);
+
+	@Select("SELECT * FROM t_user JOIN  t_patient ON t_user.pk_user_id=t_patient.fk_user_id JOIN t_doctor_patient_mapping WHERE t_user.pk_user_id=t_doctor_patient_mapping.fk_patient_id and t_doctor_patient_mapping.fk_doctor_id=#{id} and t_user.is_delete=0;")
+	List<Patient> getAllPatientsOfDoctor(int id);
 }

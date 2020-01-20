@@ -9,9 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.mapper.DoctorMapper;
 import com.example.demo.model.Doctor;
+import com.example.demo.model.Patient;
 
 @Service
-@Path("/service/doctor")
+@Path("/doctor")
 public class DoctorService {
 	@Autowired
 	DoctorMapper doctormapper;
@@ -38,8 +39,8 @@ public class DoctorService {
 		}
 	}
 
-	public int updateDoctor(Doctor doctor) {
-		if (doctormapper.updateDoctor(doctor) == 1) {
+	public int updateDoctor(Doctor doctor,int id) {
+		if (doctormapper.updateDoctor(doctor,id) == 1) {
 			return 1;
 		} else {
 			return 0;
@@ -51,6 +52,10 @@ public class DoctorService {
 		doctormapper.setUser(doctor);
 		int result = doctormapper.setDoctor(doctor);
 		return result;
+	}
+
+	public List<Patient> getAllPatientsOfDoctor(int doctorId) {
+		return doctormapper.getAllPatientsOfDoctor(doctorId);
 	}
 
 }

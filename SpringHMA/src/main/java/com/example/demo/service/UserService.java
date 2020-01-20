@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.ws.rs.Path;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,29 +13,30 @@ import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.User;
 
 @Service
-@Path("/service/user")
+@Path("/user")
 public class UserService {
+	private Logger logger = LogManager.getLogger(UserService.class);
 	@Autowired
 	UserMapper mapper;
 
 	public String setUser(User user) {
-		// TODO Auto-generated method stub
-		int rowsAffected=mapper.setUser(user);
-		if(rowsAffected==1)
-			return "Success";
+		logger.traceEntry();
+		int rowsAffected = mapper.setUser(user);
+		if (rowsAffected == 1)
+			return logger.traceExit("Success");
 		else
-			return "Try again";
+			return logger.traceExit("Try again");
 
 	}
 
 	public User getUserById(int id) {
-		// TODO Auto-generated method stub
-		return mapper.getUserById(id);
+		logger.traceEntry();
+		return logger.traceExit(mapper.getUserById(id));
 	}
 
 	public List<User> getAllUser() {
-		// TODO Auto-generated method stub
-		return mapper.getAllUser();
+		logger.traceEntry();
+		return logger.traceExit(mapper.getAllUser());
 	}
 
 }

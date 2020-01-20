@@ -5,9 +5,13 @@ import java.util.List;
 import javax.websocket.server.PathParam;
 import javax.ws.rs.Path;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.User;
@@ -16,29 +20,28 @@ import com.example.demo.service.UserService;
 @RestController
 @Path("/user")
 public class UserController {
+	private Logger logger = LogManager.getLogger(UserController.class);
 	@Autowired
 	UserService service;
-
-	public UserController(UserService service) {
-		this.service = service;
-	}
 
 	@GetMapping("/all")
 
 	public List<User> getAllUser() {
-		return service.getAllUser();
+		logger.traceEntry();
+		return logger.traceExit(service.getAllUser());
 	}
 
-	@GetMapping("/userid/{id}")
-
+	@RequestMapping(value = "/userid/{id}", method = RequestMethod.GET)
 	public User getUserById(@PathParam("id") int id) {
-		return service.getUserById(id);
+		logger.traceEntry();
+		return logger.traceExit(service.getUserById(id));
 	}
 
 	@PostMapping("/userinsert")
 	public String setUser(User user) {
-		String status =service.setUser(user);
-		return status;
+		logger.traceEntry();
+		String status = service.setUser(user);
+		return logger.traceExit(status);
 	}
 
 }

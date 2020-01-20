@@ -2,8 +2,6 @@ package com.example.demo.mapper;
 
 import java.util.List;
 
-import javax.ws.rs.Path;
-
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
