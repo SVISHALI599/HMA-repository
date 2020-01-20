@@ -16,9 +16,13 @@ public class UserService {
 	@Autowired
 	UserMapper mapper;
 
-	public User setUser() {
+	public String setUser(User user) {
 		// TODO Auto-generated method stub
-		return mapper.setUser();
+		int rowsAffected=mapper.setUser(user);
+		if(rowsAffected==1)
+			return "Success";
+		else
+			return "Try again";
 
 	}
 

@@ -2,6 +2,16 @@ package com.example.demo.model;
 
 public class User {
 	private int userId;
+	private String userName;
+	private String userPassword;
+	private String userGender;
+	private int userAge;
+	private String userMobileNumber;
+	private String userEmailId;
+	private String userAddressLine1;
+	private String userAddressLine2;
+	private String userAddressLine3;
+	private int userRoleId;
 
 	public int getUserId() {
 		return userId;
@@ -11,22 +21,13 @@ public class User {
 		this.userId = userId;
 	}
 
-	private String userName;
-	private String userPassword;
-	private String userGender;
-	private int userAge;
-	private String userMobileNumber;
-	private String userMailId;
-	private String userAddressLine1;
-	private String userAddressLine2;
-	private String userAddressLine3;
-	private int userRoleId;
+	
 
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + " ,userPassword=" + userPassword + ",userAge="
 				+ userAge + ",userGender=" + userGender + ",userMobileNumber=" + userMobileNumber + ", userMailId="
-				+ userMailId + ",userAddressLine1=" + userAddressLine1 + ",userAddressLine2=" + userAddressLine2
+				+ userEmailId + ",userAddressLine1=" + userAddressLine1 + ",userAddressLine2=" + userAddressLine2
 				+ ",userAddressLine3=" + userAddressLine3 + ",userRoleId=" + userRoleId + "]";
 	}
 
@@ -70,12 +71,12 @@ public class User {
 		this.userMobileNumber = userMobileNumber;
 	}
 
-	public String getUserMailId() {
-		return userMailId;
+	public String getUserEmailId() {
+		return userEmailId;
 	}
 
-	public void setUserMailId(String userMailId) {
-		this.userMailId = userMailId;
+	public void setUserEmailId(String userEmailId) {
+		this.userEmailId = userEmailId;
 	}
 
 	public String getUserAddressLine1() {

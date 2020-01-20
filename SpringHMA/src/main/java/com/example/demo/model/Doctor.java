@@ -2,6 +2,9 @@ package com.example.demo.model;
 
 public class Doctor extends User {
 	private int pk_doctor_id;
+	private int fk_user_id;
+	private String doctor_specialization;
+	private int doctor_experience;
 
 	public int getPk_doctor_id() {
 		return pk_doctor_id;
@@ -35,9 +38,7 @@ public class Doctor extends User {
 		this.doctor_experience = doctor_experience;
 	}
 
-	private int fk_user_id;
-	private String doctor_specialization;
-	private int doctor_experience;
+	
 
 	@Override
 	public String toString() {

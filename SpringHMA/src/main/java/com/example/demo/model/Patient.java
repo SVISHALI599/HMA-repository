@@ -2,12 +2,9 @@ package com.example.demo.model;
 
 public class Patient extends User {
 	private int pk_patient_id;
-
-	@Override
-	public String toString() {
-		return "Patient [pk_patient_id=" + pk_patient_id + ", fk_user_id=" + fk_user_id + " ,patient_disease="
-				+ patient_disease + "]";
-	}
+	private int fk_user_id;
+	private String patient_disease;
+	
 
 	public int getPk_patient_id() {
 		return pk_patient_id;
@@ -33,7 +30,10 @@ public class Patient extends User {
 		this.patient_disease = patient_disease;
 	}
 
-	private int fk_user_id;
-	private String patient_disease;
+	@Override
+	public String toString() {
+		return "Patient [pk_patient_id=" + pk_patient_id + ", fk_user_id=" + fk_user_id + " ,patient_disease="
+				+ patient_disease + "]";
+	}
 
 }

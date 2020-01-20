@@ -18,7 +18,7 @@ import com.example.demo.model.Patient;
 import com.example.demo.service.*;
 
 @RestController
-@Path("/controller/patient")
+@Path("/patient")
 public class PatientController {
 	@Autowired
 	patientService patientService;
@@ -41,8 +41,8 @@ public class PatientController {
 
 	@PostMapping("/setPatient")
 	public ResponseEntity<Integer> setPatient(@RequestBody Patient patient) {
-		int status = patientService.setPatient(patient);
-		return ResponseEntity.status(HttpStatus.OK).body(status);
+		int patientId = patientService.setPatient(patient);
+		return ResponseEntity.status(HttpStatus.OK).body(patientId);
 
 	}
 

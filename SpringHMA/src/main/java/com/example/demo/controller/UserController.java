@@ -14,7 +14,7 @@ import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 
 @RestController
-@Path("/controller/user")
+@Path("/user")
 public class UserController {
 	@Autowired
 	UserService service;
@@ -36,8 +36,9 @@ public class UserController {
 	}
 
 	@PostMapping("/userinsert")
-	public User setUser(User user) {
-		return service.setUser();
+	public String setUser(User user) {
+		String status =service.setUser(user);
+		return status;
 	}
 
 }

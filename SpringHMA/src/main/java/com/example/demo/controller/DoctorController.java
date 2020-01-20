@@ -19,7 +19,7 @@ import com.example.demo.model.Doctor;
 import com.example.demo.service.DoctorService;
 
 @RestController
-@Path("/controller/doctor")
+@Path("/doctor")
 public class DoctorController {
 	@Autowired
 	DoctorService doctorservice;
