@@ -1,49 +1,48 @@
 package com.example.demo.model;
 
+import java.util.List;
+
 public class Doctor extends User {
-	private int pk_doctor_id;
-	private int fk_user_id;
-	private String doctor_specialization;
-	private int doctor_experience;
-
-	public int getPk_doctor_id() {
-		return pk_doctor_id;
+	private int pkDoctorId;
+	private int fkUserId;
+	private String doctorSpecialization;
+	private int doctorExperience;
+	private List<Patient> patientList;
+	public int getPkDoctorId() {
+		return pkDoctorId;
 	}
-
-	public void setPk_doctor_id(int pk_doctor_id) {
-		this.pk_doctor_id = pk_doctor_id;
+	public void setPkDoctorId(int pkDoctorId) {
+		this.pkDoctorId = pkDoctorId;
 	}
-
-	public int getFk_user_id() {
-		return fk_user_id;
+	public int getFkUserId() {
+		return fkUserId;
 	}
-
-	public void setFk_user_id(int fk_user_id) {
-		this.fk_user_id = fk_user_id;
+	public void setFkUserId(int fkUserId) {
+		this.fkUserId = fkUserId;
 	}
-
-	public String getDoctor_specialization() {
-		return doctor_specialization;
+	public String getDoctorSpecialization() {
+		return doctorSpecialization;
 	}
-
-	public void setDoctor_specialization(String doctor_specialization) {
-		this.doctor_specialization = doctor_specialization;
+	public void setDoctorSpecialization(String doctorSpecialization) {
+		this.doctorSpecialization = doctorSpecialization;
 	}
-
-	public int getDoctor_experience() {
-		return doctor_experience;
+	public int getDoctorExperience() {
+		return doctorExperience;
 	}
-
-	public void setDoctor_experience(int doctor_experience) {
-		this.doctor_experience = doctor_experience;
+	public void setDoctorExperience(int doctorExperience) {
+		this.doctorExperience = doctorExperience;
 	}
-
+	public List<Patient> getPatientList() {
+		return patientList;
+	}
+	public void setPatientList(List<Patient> patientList) {
+		this.patientList = patientList;
+	}
 	
-
 	@Override
 	public String toString() {
-		return "Doctor [pk_doctor_id=" + pk_doctor_id + ", fk_user_id=" + fk_user_id + " , doctor_experience="
-				+ doctor_experience + ",doctor_specialization=" + doctor_specialization + "]";
+		return "Doctor [pkDoctorId=" + pkDoctorId + ", fkUserId=" + fkUserId + " , doctorExperience="
+				+ doctorExperience + ",doctorSpecialization=" + doctorSpecialization + "]";
 	}
 
 }

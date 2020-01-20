@@ -20,17 +20,6 @@ public class User {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-
-	
-
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + " ,userPassword=" + userPassword + ",userAge="
-				+ userAge + ",userGender=" + userGender + ",userMobileNumber=" + userMobileNumber + ", userMailId="
-				+ userEmailId + ",userAddressLine1=" + userAddressLine1 + ",userAddressLine2=" + userAddressLine2
-				+ ",userAddressLine3=" + userAddressLine3 + ",userRoleId=" + userRoleId + "]";
-	}
-
 	public String getUserName() {
 		return userName;
 	}
@@ -110,4 +99,12 @@ public class User {
 	public void setUserRoleId(int userRoleId) {
 		this.userRoleId = userRoleId;
 	}
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userName=" + userName + " ,userPassword=" + userPassword + ",userAge="
+				+ userAge + ",userGender=" + userGender + ",userMobileNumber=" + userMobileNumber + ", userMailId="
+				+ userEmailId + ",userAddressLine1=" + userAddressLine1 + ",userAddressLine2=" + userAddressLine2
+				+ ",userAddressLine3=" + userAddressLine3 + ",userRoleId=" + userRoleId + "]";
+	}
+
 }

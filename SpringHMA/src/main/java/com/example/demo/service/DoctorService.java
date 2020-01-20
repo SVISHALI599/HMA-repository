@@ -1,21 +1,15 @@
 package com.example.demo.service;
 
 import java.util.List;
-
-import javax.ws.rs.Path;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.mapper.DoctorMapper;
 import com.example.demo.model.Doctor;
-import com.example.demo.model.Doctor_patient_mapping;
 import com.example.demo.model.Patient;
 
 @Service
-@Path("/doctor")
 public class DoctorService {
 	private Logger logger = LogManager.getLogger(DoctorService.class);
 	@Autowired
@@ -49,19 +43,21 @@ public class DoctorService {
 		}
 	}
 
-	public int setDoctor(Doctor doctor) {
+	public int createDoctor(Doctor doctor) {
 		logger.traceEntry();
 		doctormapper.setUser(doctor);
-		int result = doctormapper.setDoctor(doctor);
+		int result = doctormapper.createDoctor(doctor);
 		return logger.traceExit(result);
 	}
 
 	public List<Patient> getAllPatientsOfDoctor(int doctorId) {
-		return doctormapper.getAllPatientsOfDoctor(doctorId);
+		logger.traceEntry();
+		return logger.traceExit(doctormapper.getAllPatientsOfDoctor(doctorId));
 	}
 
-	public List<Doctor_patient_mapping> getAllPatientsOfAllDoctors() {
-		return doctormapper.getAllPatientsOfAllDoctors();
+	public List<Doctor> getAllPatientsOfAllDoctors() {
+		logger.traceEntry();
+		return logger.traceExit(doctormapper.getAllPatientsOfAllDoctors());
 	}
 
 }

@@ -18,14 +18,15 @@ public interface PatientMapper {
 	List<Patient> getAllPatient();
 
 	@Select("select * from  t_patient where pk_patient_id=#{pk_patient_id}")
+	// get some user details also
 	Patient getPatientById(int id);
 
 	@Insert("INSERT INTO t_user (user_name, user_password, user_age, user_gender, user_mobile_number, user_email_id, user_address_line1, user_address_line2, user_address_line3, fk_role_id) VALUES (#{userName}, #{userPassword}, #{userAge}, #{userGender}, #{userMobileNumber}, #{userEmailId}, #{userAddressLine1}, #{userAddressLine2}, #{userAddressLine3}, 4)")
 	@Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "pk_user_id")
-	int setUser(Patient patient);
+	int createUser(Patient patient);
 
 	@Insert("INSERT INTO t_patient (fk_user_id,patient_disease) VALUES (#{userId},#{patientDisease})")
-	int setPatient(Patient patient);
+	int createPatient(Patient patient);
 
 	@Update("UPDATE t_user SET is_delete = 1 WHERE pk_user_id = #{userId} AND is_delete= 0")
 	int deletePatient(int userId);

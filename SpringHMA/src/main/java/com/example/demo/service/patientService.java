@@ -1,9 +1,6 @@
 package com.example.demo.service;
 
 import java.util.List;
-
-import javax.ws.rs.Path;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +9,11 @@ import com.example.demo.mapper.PatientMapper;
 import com.example.demo.model.Patient;
 
 @Service
-@Path("/patient")
-public class patientService {
-	private Logger logger = LogManager.getLogger(patientService.class);
+// TODO class names  
+public class PatientService {
+	private Logger logger = LogManager.getLogger(PatientService.class);
 	@Autowired
 	PatientMapper mapper;
-
-	public void PatientService(PatientMapper mapper) {
-		this.mapper = mapper;
-	}
 
 	public List<Patient> getAllPatient() {
 		logger.traceEntry();
@@ -50,10 +43,10 @@ public class patientService {
 		}
 	}
 
-	public int setPatient(Patient patient) {
+	public int createPatient(Patient patient) {
 		logger.traceEntry();
-		mapper.setUser(patient);
-		int result = mapper.setPatient(patient);
+		mapper.createUser(patient);
+		int result = mapper.createPatient(patient);
 		return logger.traceExit(result);
 	}
 
