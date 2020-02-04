@@ -13,7 +13,6 @@ import com.example.demo.model.Doctor;
 import com.example.demo.model.Patient;
 
 @Mapper
-
 public interface DoctorMapper {
 	@Select("SELECT user_name, user_age, user_gender, user_mobile_number, user_email_id, user_address_line1, user_address_line2, user_address_line3, doctor_specialization,doctor_experience FROM t_user JOIN t_doctor ON t_user.pk_user_id=t_doctor.fk_user_id")
 	List<Doctor> getAllDoctor();
